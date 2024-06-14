@@ -11,6 +11,16 @@
   </head>
 
   <body>
+    <header>
+      <% if current_user %>
+        <%= image_tag current_user.avatar unless current_user.avatar.nil? %>
+        <%= current_user.name %>さん
+        <%= button_to "ログアウト", destroy_user_session_path, method: :delete %>
+      <% else  %>
+        ゲストさん
+        <%= button_to "Discordでログイン", user_discord_omniauth_authorize_path, data: { turbo: false } %>
+      <% end %>
+    </header>
     <%= yield %>
   </body>
 </html>

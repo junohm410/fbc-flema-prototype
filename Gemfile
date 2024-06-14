@@ -59,5 +59,6 @@ group :development do
   gem 'rubocop-rails', require: false
 end
 
+gem 'devise'
 gem 'omniauth-discord'
 gem 'omniauth-rails_csrf_protection'
