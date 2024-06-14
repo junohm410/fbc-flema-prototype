@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def discord
     @user = User.find_or_create_from_auth_hash!(request.env['omniauth.auth'])
