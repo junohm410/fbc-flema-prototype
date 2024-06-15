@@ -60,5 +60,6 @@ group :development do
 end
 
 gem 'devise'
+gem 'discordrb'
 gem 'omniauth-discord'
 gem 'omniauth-rails_csrf_protection'
