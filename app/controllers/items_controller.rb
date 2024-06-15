@@ -24,6 +24,19 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
 
     if @item.save
+      Discordrb::API::Channel.create_message(
+        "Bot #{ENV['DISCORD_BOT_TOKEN']}",
+        ENV['DISCORD_CHANNEL_ID'],
+        "#{@item.name}が出品されました！",
+        false,
+        [{
+          title: @item.name,
+          description: "#{@item.description}\n価格: #{@item.price}円",
+          color: 16_083_556,
+          timestamp: @item.created_at,
+          url: item_url(@item)
+        }]
+      )
       redirect_to @item, notice: 'Item was successfully created.'
     else
       render :new, status: :unprocessable_entity
